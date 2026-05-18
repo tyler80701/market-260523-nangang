@@ -1,0 +1,137 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { Clock, MapPin, Bus, AlertTriangle, CheckCircle2, Tent, LightbulbOff } from 'lucide-react';
+
+const App = () => {
+  return (
+    <div className="min-h-screen bg-[#FFF5F5] font-sans pb-12">
+      {/* 頂部標題區 */}
+      <header className="bg-rose-500 text-white p-6 shadow-md rounded-b-3xl">
+        <h1 className="text-3xl font-bold mb-2">爸、媽：市集行前通知 🌸</h1>
+        <p className="text-lg opacity-90">花時．微醺日和 - CITYLINK 南港店</p>
+      </header>
+
+      <main className="max-w-3xl mx-auto p-4 space-y-6 mt-4">
+        
+        {/* 基本資訊 */}
+        <section className="bg-white rounded-2xl p-6 shadow-sm border border-rose-100">
+          <h2 className="text-xl font-bold text-gray-800 border-b-2 border-rose-200 pb-2 mb-4 flex items-center">
+            <Clock className="mr-2 text-rose-500" /> 時間重點 (千萬別遲到喔！)
+          </h2>
+          <ul className="text-lg space-y-3 text-gray-700">
+            <li><strong className="text-rose-600">日期：</strong> 5/23 (六) ～ 5/24 (日)</li>
+            <li className="bg-rose-50 p-2 rounded-lg"><strong className="text-rose-600">報到與佈置：</strong> 早上 10:00 (超過半小時會扣錢！)</li>
+            <li><strong className="text-rose-600">營業時間：</strong> 11:00 - 20:00 (準時開攤，不能提早走)</li>
+            <li><strong className="text-rose-600">撤場時間：</strong> 晚上 20:00 - 21:00</li>
+          </ul>
+        </section>
+
+        {/* 攤位資訊 */}
+        <section className="bg-white rounded-2xl p-6 shadow-sm border border-orange-100">
+          <h2 className="text-xl font-bold text-gray-800 border-b-2 border-orange-200 pb-2 mb-4 flex items-center">
+            <Tent className="mr-2 text-orange-500" /> 攤位資訊 (你們的位置)
+          </h2>
+          <div className="bg-orange-50 p-4 rounded-xl mb-4">
+            <p className="text-xl font-bold text-gray-800 mb-2">
+              <span className="text-orange-600">8號：</span> 呂美珠手工藝坊<br/>
+              <span className="text-orange-600">9號：</span> 日光山茶屋
+            </p>
+            <p className="text-lg text-gray-700">兩個攤位是排在一起的，互相有照應！</p>
+          </div>
+          
+          <div className="mt-4">
+            <p className="text-lg text-gray-700 font-bold mb-2">📍 位置在哪裡？</p>
+            <p className="text-gray-700 text-lg mb-3">
+              攤位位在 A棟與B棟1樓廣場的<strong className="text-orange-600">「大貓區」</strong>。看到下面這隻大貓咪裝置藝術，你們的攤位就在旁邊！
+            </p>
+            <img 
+              src="./4721.jpg" 
+              alt="CITYLINK 大貓咪裝置藝術" 
+              className="w-full rounded-lg shadow-md object-cover"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=800&q=80";
+              }}
+            />
+          </div>
+
+          <div className="mt-4 bg-red-50 text-red-700 p-4 rounded-xl flex items-start">
+            <LightbulbOff className="w-8 h-8 mr-3 flex-shrink-0" />
+            <div>
+              <p className="font-bold text-lg">⚠️ 重要：無供電</p>
+              <p className="text-base">大會平面圖標記 8號、9號 攤位「不用電」。請務必自己準備充好電的 <strong>行動電源</strong> 和 <strong>USB充電燈</strong> 來照明！</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 交通指南 */}
+        <section className="bg-white rounded-2xl p-6 shadow-sm border border-blue-100">
+          <h2 className="text-xl font-bold text-gray-800 border-b-2 border-blue-200 pb-2 mb-4 flex items-center">
+            <Bus className="mr-2 text-blue-500" /> 交通方式 (搭國光客運)
+          </h2>
+          <ol className="list-decimal list-inside text-lg space-y-4 text-gray-700">
+            <li>搭乘 <strong>國光客運</strong> 前往 <strong className="text-blue-600 text-xl">南港轉運站</strong>。</li>
+            <li>下車後，轉運站就在 <strong>CITYLINK 南港店</strong> 旁邊，可以直接走進去。</li>
+            <li>走到 <strong>1樓</strong>，往 A棟與B棟 之間的廣場走。</li>
+            <li>找那隻 <strong>巨大的躺著的貓咪</strong>，找到貓咪就找到攤位了！</li>
+          </ol>
+        </section>
+
+        {/* 必帶清單 */}
+        <section className="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+          <h2 className="text-xl font-bold text-gray-800 border-b-2 border-green-200 pb-2 mb-4 flex items-center">
+            <CheckCircle2 className="mr-2 text-green-500" /> 出門前確認清單
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg text-gray-700">
+            <label className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+              <input type="checkbox" className="w-6 h-6 text-green-500 rounded focus:ring-green-400" />
+              <span>白色或淺米色 <strong>桌布</strong><br/><span className="text-sm text-gray-500">(一定要夠大，能蓋到地板)</span></span>
+            </label>
+            <label className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+              <input type="checkbox" className="w-6 h-6 text-green-500 rounded focus:ring-green-400" />
+              <span>找零用的 <strong>零錢</strong> 與袋子</span>
+            </label>
+            <label className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+              <input type="checkbox" className="w-6 h-6 text-green-500 rounded focus:ring-green-400" />
+              <span>攤位招牌、QR Code 立牌</span>
+            </label>
+            <label className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+              <input type="checkbox" className="w-6 h-6 text-green-500 rounded focus:ring-green-400" />
+              <span><strong>USB 充電燈</strong> 與 行動電源</span>
+            </label>
+            <label className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+              <input type="checkbox" className="w-6 h-6 text-green-500 rounded focus:ring-green-400" />
+              <span>另一塊布 <span className="text-sm text-gray-500">(晚上收攤要蓋住商品用)</span></span>
+            </label>
+            <label className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+              <input type="checkbox" className="w-6 h-6 text-green-500 rounded focus:ring-green-400" />
+              <span>垃圾袋、衛生紙、水</span>
+            </label>
+          </div>
+        </section>
+
+        {/* 絕對不能做的事 */}
+        <section className="bg-gray-800 text-white rounded-2xl p-6 shadow-sm">
+          <h2 className="text-xl font-bold border-b-2 border-gray-600 pb-2 mb-4 flex items-center text-red-400">
+            <AlertTriangle className="mr-2" /> ⚠️ 大會規定 (違規會罰錢！)
+          </h2>
+          <ul className="text-lg space-y-3">
+            <li>❌ <strong>禁止使用紙箱</strong> 或白色塑膠箱來當作陳列墊高！</li>
+            <li>❌ 晚上收攤時，<strong>不能</strong>直接把原來的桌布往上翻蓋，一定要帶另一塊布來蓋商品。</li>
+            <li>❌ 絕不能遲到、早退。</li>
+            <li>❌ 離開時不能留下任何垃圾。</li>
+          </ul>
+        </section>
+
+        <div className="text-center text-gray-500 mt-8 mb-4">
+          <p>祝 呂美珠手工藝坊、日光山茶屋 生意興隆！🎉</p>
+        </div>
+
+      </main>
+    </div>
+  );
+};
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);
